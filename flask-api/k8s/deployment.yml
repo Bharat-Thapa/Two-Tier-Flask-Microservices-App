@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: taskmaster
+  name: deployment
   labels:
-    app: taskmaster
+    app: deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: taskmaster
+      app: deployment
   template:
     metadata:
       labels:
-        app: taskmaster
+        app: deployment
     spec:
       containers:
-        - name: taskmaster
+        - name: deployment
           image: kunalgohrani/microservicespythonapp:latest
           ports:
             - containerPort: 5000

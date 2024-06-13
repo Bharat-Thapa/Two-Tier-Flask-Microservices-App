@@ -63,13 +63,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
-                    sh 'helm upgrade --install microservice-app ./helm-chart --kubeconfig $KUBECONFIG'
-                }
-            }
+    steps {
+        withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
+            sh 'helm upgrade --install two-tier-flask-app ./helm-chart --set image.repository=${env.dockerHubUser}/two-tier-flask-app --set image.tag=latest --kubeconfig $KUBECONFIG'
         }
     }
+}
+
 
     post {
         always {

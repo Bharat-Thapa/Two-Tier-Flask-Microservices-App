@@ -14,16 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: deployment
+            name: deployment-svc  # Ensure this is the correct service name
             port:
               number: 80
-  - host: "mongo.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: mongo
-            port:
-              number: 27017

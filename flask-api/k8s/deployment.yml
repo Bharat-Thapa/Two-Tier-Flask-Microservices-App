@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: deployment
-          image: kunalgohrani/microservicespythonapp:latest
+          image: thapabharat/two-tier-flask-app:latest
           ports:
             - containerPort: 5000
           imagePullPolicy: Always

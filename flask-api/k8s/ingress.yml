@@ -1,26 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-flask-app
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: "domain.com"
     http:
       paths:
-      - pathType: Prefix
-        path: "/test"
+      - path: /
+        pathType: Prefix
         backend:
           service:
-            name: flask-app
+            name: deployment
             port:
-              number: 5000
-  - host: "*.domain.com"
+              number: 80
+  - host: "mongo.com"
     http:
       paths:
-      - pathType: Prefix
-        path: "/test"
+      - path: /
+        pathType: Prefix
         backend:
           service:
-            name: flask-app
+            name: mongo
             port:
-              number: 5000
+              number: 27017
